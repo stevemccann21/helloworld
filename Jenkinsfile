@@ -23,15 +23,5 @@ pipeline {
                 sh "${mavenHome}/bin/mvn clean install"
             }
         }
-#        stage ('Create Docker Image') {
-#            steps {
-#                sh "docker build -t ${dockerRepo}/${dockerImageName} ."
-#            }
-#        }
-#        stage ('Push to Docker repo') {
-#            steps {
-#                sh "docker push ${dockerRepo}/${dockerImageName}"
-#            }
-#        }
     }
 }
