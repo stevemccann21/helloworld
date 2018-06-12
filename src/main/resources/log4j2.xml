@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="SAMI Loader Service" packages="">
+
+  <Appenders>
+
+    <RollingFile name="RollingFile" fileName="logs/HelloWorld.log" filePattern="logs/$${date:yyyy-MM}/HelloWorld-%d{MM-dd-yyyy}-%i.log.zip">
+      <PatternLayout pattern="%d | %p | %c{1} | %M (%L) - %m%n"/>
+      <Policies>
+        <OnStartupTriggeringPolicy />
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="250MB"/>
+      </Policies>
+    </RollingFile>
+
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d | %p | %c{1} | %M (%L) - %m%n"/>
+    </Console>
+
+    <Async name="Async">
+      <AppenderRef ref="RollingFile"/>
+    </Async>
+
+  </Appenders>
+
+  <Loggers>
+
+    <AsyncLogger name="com.sm.hw" level="debug" includeLocation="true">
+      <AppenderRef ref="Async"/>
+    </AsyncLogger>
+
+    <Root level="error" additivity="false">
+      <AppenderRef ref="RollingFile"/>
+      <AppenderRef ref="console"/>
+    </Root>
+
+  </Loggers>
+</Configuration>
