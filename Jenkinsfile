@@ -2,9 +2,7 @@ pipeline {
     agent any
     environment {
         mavenHome = tool 'Maven'
-    }
-    tools {
-        maven 'Maven'
+        scannerHome = tool 'SonarQube Scanner 2.8';
     }
     stages {
         stage ('Checkout') {
@@ -25,7 +23,9 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=sonarqube:9000 -Dsonar.login=helloworld"
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh "${scannerHome}/bin/sonar-scanner"   
+                }
             }
         }
     }
