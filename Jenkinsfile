@@ -23,7 +23,9 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                sh "/usr/bin/sonar-scanner/bin/sonar-scanner"
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh "${scannerHome}/bin/sonar-scanner"   
+                }
             }
         }
     }
