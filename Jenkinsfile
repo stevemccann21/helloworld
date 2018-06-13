@@ -23,7 +23,7 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                sh "/usr/bin/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=helloworld"
+                sh "/usr/bin/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=http://jenkins:9000 -Dsonar.login=helloworld"
             }
         }
     }
