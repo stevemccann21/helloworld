@@ -23,9 +23,11 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    sh "${scannerHome}/bin/sonar-scanner"   
-                }
+                sh "/usr/bin/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=sonarqube:9000 -Dsonar.login=helloworld"
+             }
+         }
+     }
+
             }
         }
     }
