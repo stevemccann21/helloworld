@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         mavenHome = tool 'Maven'
-        scannerHome = tool 'SonarQube Scanner 2.8';
+        scannerHome = tool 'SonarQubeScanner';
     }
     stages {
         stage ('Checkout') {
