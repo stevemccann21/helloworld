@@ -25,7 +25,7 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                sh "sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=sonarqube:9000 -Dsonar.login=helloworld"
+                sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=hello_world -Dsonar.sources=. -Dsonar.host.url=sonarqube:9000 -Dsonar.login=helloworld"
             }
         }
     }
