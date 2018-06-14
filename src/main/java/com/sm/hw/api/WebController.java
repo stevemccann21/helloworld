@@ -19,6 +19,8 @@ public class WebController {
   /** Logger. */
   private static final Logger LOGGER = LoggerFactory.getLogger(WebController.class);
 
+  private static final String THIS_IS_NEVER_USED = "this is never used";
+
 
   /**
    * Prints queue information in JSON.
@@ -28,7 +30,19 @@ public class WebController {
   @RequestMapping(value = "/echo", method = RequestMethod.GET)
   public String echo() {
 
-    return "Hello there, today's date is " + new Date();
+    long millis = getMillis();
+
+    String response = String.format("{}: Hello there, today's date is %s", millis, new Date());
+    LOGGER.info("response={}", response);
+    return response;
+
   }
+
+  public long getMillis() {
+
+    return System.currentTimeMillis();
+  }
+
+
 
 }
