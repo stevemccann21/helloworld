@@ -32,7 +32,7 @@ public class WebController {
 
     long millis = getMillis();
 
-    String response = String.format("{}: Hello there, today's date is %s", millis, new Date());
+    String response = String.format("%s: Hello there, today's date is %s", millis, new Date());
     LOGGER.info("response={}", response);
     return response;
 
